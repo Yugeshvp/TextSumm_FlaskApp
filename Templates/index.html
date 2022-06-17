@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Summaryzer</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/demo.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter&family=Source+Code+Pro&display=swap"
+        />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ url_for('static', filename = 'css/bootstrap.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename = 'css/main.css') }}" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+/>
+<link href="{{ url_for('static', filename = 'css/bootstrap.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename = 'css/main.css') }}" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/responsive.css')}}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/custom.css')}}">
+	<script src="{{ url_for('static', filename = 'js/modernizr.js')}}"></script> <!-- Modernizr -->
+
+
+</style>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+
+
+  <!-- Favicons -->
+	<link href='static/img/favicon.ico' rel="icon">
+	<link href='static/img/apple-touch-icon.png' rel="apple-touch-icon">
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <div class="w3-bar w3-teal w3-padding">
+  <a href="{{url_for('index')}}" class="w3-bar-item w3-button w3-padding ">Home</a>
+  <a href="{{url_for('home')}}" class="w3-bar-item w3-button w3-padding    nav-link js-scroll-trigger">Text summarizer</a>
+  <a href="{{url_for('index2')}}" class="w3-bar-item w3-button w3-padding ">URL Summarizer</a>
+  <a href="{{url_for('summarize')}}" class="w3-bar-item w3-button w3-padding">Doc upload Summarizer</a>
+  
+</div> 
+ 
+  <!-- Start of Main Section -->
+  <section id="main_section">
+    <form method="POST" action="/summerize" >
+      <div class="container content">
+        <div class='row'>
+              <div class="col-md-6 m-0 p-0">
+                <h3 class="text-center">Raw Text</h3>
+                
+				<div class="context-box context-box-1 border-top" id="content-raw" contenteditable="true"></div>
+				
+                <div class="row d-flex justify-content-between mr-5 pl-2">
+                    <div class="col">
+                      <strong><h6 id="len_raw_text">0 word</h6></strong>
+					  
+                    </div>
+                    <div>                  
+					
+				    <br><br>
+		        	
+	        		<br><br><br>
+					</br>
+			  		
+				<button class="btn btn-danger rounded-5 mr-2" type="reset" id="reset-btn">Clear</button>
+                      <button class="w3-btn w3-teal" id="summerized-btn" type="submit">Summerized</button>
+					  <button class="w3-btn w3-teal" id="paste-btn" onclick="paste();" type="button">paste</button>
+                      <button class="d-none btn btn-primary" type="button" id="processing-btn" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Summerizing...
+                      </button>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6 m-0 p-0">
+                <h3 class="text-center">Summarized Text</h3>
+                <div class="context-box context-box-2 border-top" id="content-summerized" name="content-summerized" contenteditable="true"> 
+                </div>
+                <div class="row d-flex justify-content-between pl-3 pr-3">
+                  <div class="col">
+                    <strong><h6 id="words_count">0 word</h6></strong>
+					
+                  </div>                  
+                  <div class="col">
+                    <p id="exec_time"></p>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary" id="copy_btn" type="button"><i class="fas fa-copy"></i></button>
+                    <div id="copied">Copied
+					
+					</div>       
+                   <div class="context-box context-box-2 border-top">
+                    
+                        
+                    
+                </div>					
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>  
+    </form>      
+  </section> 
+  <!-- End -->
+
+    <!--  Scripts-->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="static/js/scripts.js"></script>
+
+ </body>
+</html>

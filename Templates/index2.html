@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summarizer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="{{ url_for('static', filename='w3.css') }}">
+
+<link rel="stylesheet" href="/css/demo.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter&family=Source+Code+Pro&display=swap"
+        />
+  
+    <link href="{{ url_for('static', filename = 'css/bootstrap.css') }}" rel="stylesheet">
+
+<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+
+<style type="text/css">
+.main-section{
+margin:0 auto;
+padding: 0px;
+margin-top: 0px;
+background-color: #fff;
+box-shadow: 0px 0px 10px #c1c1c1;
+}
+#custom_card2{
+border: 1px solid black;
+margin-left: 140px;
+height:900px;
+width: 900px;
+background-color: mistyrose;
+padding-top: 50px;
+    padding-right: 70px;
+    padding-bottom: 100px;
+    padding-left: 90px;
+}
+</style>
+</style>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+<style>
+#copying
+{
+background-color:black;
+color: white;
+padding: 6px 18px;
+}
+#copying:hover
+{
+background-color:green;
+color:white;
+}
+#download
+{
+background-color:black;
+color: white;
+padding: 6px 18px;
+}
+#download:hover
+{
+background-color:green;
+color:white;
+}
+#myInput
+{
+display: block;
+resize: none;
+height:200px;
+width:450px;
+}
+.footer {
+   position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding:8px;
+   background-color: #ccc;
+   color: white;
+   text-align: center;
+}
+body {
+background:
+    radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)),
+    linear-gradient(108deg, #26D0CE, #1A2980 90%);
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+.card {
+  background: #fff;
+  border-radius: 3px solid white;
+  display: inline-block;
+  font-weight:600;
+  height: 450px;
+  margin: 1rem;
+  position: relative;
+  width: 600px;
+}
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+textarea
+{
+color:black;
+font-size:17px;
+font-weight:600;
+}
+</style>
+</head>
+<body>
+<div class="w3-bar w3-teal w3-padding">
+  <a href="{{url_for('home')}}" class="w3-bar-item w3-button w3-padding ">Home</a>
+  <a href="{{url_for('index')}}" class="w3-bar-item w3-button w3-padding    nav-link js-scroll-trigger">Text summarizer</a>
+  <a href="{{url_for('index2')}}" class="w3-bar-item w3-button w3-padding ">URL Summarizer</a>
+  <a href="{{url_for('summarize')}}" class="w3-bar-item w3-button w3-padding">Doc upload Summarizer </a>
+  
+</div> 
+
+<div class="w3-container w3-center">
+  <form method="POST" action="/url_text", enctype=multipart/form-data>
+    <div class="w3-container w3-center">
+      <h5 class="material-icons">Web Scraping</h5>
+      <input type="text" name="raw_url" placeholder="Enter URL Here" required="true">
+    </div>
+    <br/>
+    <button class="btn btn-danger rounded-5 mr-2" type="reset">Clear</button>
+    <button class="w3-btn w3-teal" onclick="countWords(this)" type="submit">Summarize</button>
+  </form>
+</div>
+<br/>
+
+
+  <textarea id="input-textarea" onchange="countWords(this);" onkeyup="countWords(this);" rows="50" cols="80">
+    {{ filename }}
+   {{ summary_scraped }}
+  </textarea>
+  <p>
+<span id="wordCount">0</span> 
+</p>
+<!--<strong><h6 id="words_count">0 word</h6></strong>-->
+ <div class="w3-center"><a href="{{url_for('index')}}" style="text-decoration:none"><button class="w3-btn w3-teal w3-round-large" style="width:10%;text-decoration:none;" type="submit" value="reset">Back</button></a></div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script type="text/javascript">
+$('.file_upload').file_upload();
+</script>
+<br/>
+
+<script> 
+function countWords(self) {
+
+    var spaces = self?.value.match(/\S+/g);
+    var words = spaces ? spaces.length : 0;
+    console.log("words",words);
+    document.getElementById("wordCount").innerHTML = words + " words";
+}
+/*function window.onload*/
+setTimeout(function(){ countWords(document.getElementById("input-textarea"))}, 2000);
+</script>
+
+<div class="w3-container w3-teal">
+
+    <div class="w3-row">
+
+  <div class="w3-half w3-container">
+          <h4 >Yugesh sample flask App</h4>
+          <br/>
+
+
+   </div>
+
+      </div>
+<br>
+    </div>
+</body>
+</html>

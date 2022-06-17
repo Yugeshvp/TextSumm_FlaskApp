@@ -1,6 +1,6 @@
 beautifulsoup4     ==4.11.1
 bs4                ==0.0.1
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm==2.1.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
 Flask              ==2.1.2
 nltk               ==3.7
 pandas             ==1.4.2

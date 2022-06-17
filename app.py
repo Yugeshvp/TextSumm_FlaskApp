@@ -41,7 +41,7 @@ global final_summary_nltk2
 
 
 # import nltk
-# nltk.download("all")
+nltk.download("all")
 # exit()
 
 nlp = spacy.load("en_core_web_sm")

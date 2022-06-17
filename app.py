@@ -2,9 +2,6 @@ from flask import Flask,render_template,url_for,request,send_file,redirect,jsoni
 import time
 import spacy
 import nltk
-from sumy.parsers.plaintext import PlaintextParser
-from sumy.nlp.tokenizers import Tokenizer
-from sumy.summarizers.lsa import LsaSummarizer
 import pandas as pd
 from spacy_summarization import text_summarizer
 from nltk_summarization import nltk_summarizer
@@ -117,15 +114,6 @@ def url_text():
         cleaned_text = clean_text(raw_text)
         summary_scraped = summariser_spacy(cleaned_text)
         return render_template('index2.html',summary_scraped=summary_scraped)
-
-
-def lsa_summary(docx):
-   parser = PlaintextParser.from_string(docx,Tokenizer("english"))
-   summarizer_lsa = LsaSummarizer()
-   summary_2 =summarizer_lsa(parser.document,3)
-   summary_list = [str(sentence) for sentence in summary_2]
-   result = ' '.join(summary_list)
-   return result
    
 def readingTime(mytext):
 	total_words = len([ token.text for token in nlp(mytext)])

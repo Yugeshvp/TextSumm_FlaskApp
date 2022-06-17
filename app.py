@@ -23,7 +23,6 @@ from string import punctuation
 import urllib.request
 import Text_summarization
 
-from summarizer import Summarizer
 import os
 import re
 import docx
@@ -32,14 +31,8 @@ from striprtf.striprtf import rtf_to_text
 from pptx import Presentation
 import json
 
-regex = "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$"
-
 #app configurations
 app=Flask(__name__)
-
-# Make a regular expression 
-# for validating an Email 
-regex = "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$"
 
 #app configurations
 app=Flask(__name__)

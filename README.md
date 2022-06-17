@@ -1,4 +1,4 @@
-# Text_summ_flaskapp Installation Steps:
+# TextSumm_FlaskApp Installation Steps:
 **Step1:** Create Environment in your project folder For example **f_app**
 
 **Step2:** for example create folder and create directory f_app and in command prompt do the following:  **cd f_app**  #f_app is project folder

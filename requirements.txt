@@ -13,5 +13,5 @@ spacy              ==3.2.3
 urllib3
 striprtf
 flask-uploads
-werkzeug==0.16.0
+werkzeug
 gunicorn==20.0.4

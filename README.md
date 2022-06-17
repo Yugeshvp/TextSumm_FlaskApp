@@ -5,7 +5,7 @@
 
 **Step3:** creating environment command by using:   **py -m venv env**
 
-**Step4:** Activating scripts after env is created   f_app> **env\Scripts\activate**
+**Step4:** Activating scripts after env is created   f_app> **Scripts\activate**
 
 **Step5:** Install flask using **pip install flask**
 

@@ -3,7 +3,6 @@ import time
 import spacy
 import nltk
 import pandas as pd
-from spacy_summarization import text_summarizer
 from nltk_summarization import nltk_summarizer
 from nltk_summarization2 import nltk_summarizer2
 from bs4 import BeautifulSoup
@@ -12,7 +11,7 @@ from werkzeug.datastructures import  FileStorage
 from heapq import nlargest
 import re
 import os
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_sm')
 from spacy.lang.en.stop_words import STOP_WORDS
 stopwords = list(STOP_WORDS)
 from string import punctuation

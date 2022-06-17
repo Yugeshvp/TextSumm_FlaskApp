@@ -31,8 +31,6 @@ from striprtf.striprtf import rtf_to_text
 from pptx import Presentation
 import json
 
-#app configurations
-app=Flask(__name__)
 
 #app configurations
 app=Flask(__name__)
